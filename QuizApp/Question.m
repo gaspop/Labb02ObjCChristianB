@@ -31,4 +31,12 @@
     return [self.correctAnswer isEqualToString:answer];
 }
 
+- (NSArray*) getAnswers {
+    return self.answers;
+}
+
+- (NSString*) getQuestion {
+    return self.question;
+}
+
 @end

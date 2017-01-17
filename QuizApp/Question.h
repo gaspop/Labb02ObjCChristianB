@@ -12,6 +12,8 @@
 
 + (Question*) newQuestion:(NSString*)q withAnswer:(NSString*)a andBadAnswer:(NSString*)bad1 andBadAnswer:(NSString*)bad2 andBadAnswer:(NSString*)bad3;
 
+- (NSString*) getQuestion;
+- (NSArray*) getAnswers;
 - (BOOL) isAnswerCorrect:(NSString*)answer;
 
 @end

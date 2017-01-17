@@ -10,4 +10,10 @@
 
 @interface Game : NSObject
 
++ (Game*) newGame;
+- (void) newQuestion;
+- (NSString*) getQuestion;
+- (NSArray*) getAnswers;
+- (BOOL) makeGuess:(NSString*) guess;
+
 @end
