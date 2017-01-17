@@ -14,6 +14,11 @@
 - (void) newQuestion;
 - (NSString*) getQuestion;
 - (NSArray*) getAnswers;
-- (BOOL) makeGuess:(NSString*) guess;
+- (NSString*) getCorrectAnswer;
+- (BOOL) isGameFinished;
+- (BOOL) wasAnswerCorrect;
+- (int) getRoundsWon;
+- (int) getRoundsLost;
+- (void) answerQuestion:(NSString*) answer;
 
 @end

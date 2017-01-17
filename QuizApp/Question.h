@@ -14,6 +14,7 @@
 
 - (NSString*) getQuestion;
 - (NSArray*) getAnswers;
+- (NSString*) getCorrectAnswer;
 - (BOOL) isAnswerCorrect:(NSString*)answer;
 
 @end

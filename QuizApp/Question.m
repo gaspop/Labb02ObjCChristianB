@@ -27,16 +27,20 @@
     return newQuestion;
 }
 
-- (BOOL) isAnswerCorrect:(NSString*)answer {
+- (BOOL)isAnswerCorrect:(NSString*)answer {
     return [self.correctAnswer isEqualToString:answer];
 }
 
-- (NSArray*) getAnswers {
+- (NSString*)getQuestion {
+    return self.question;
+}
+
+- (NSArray*)getAnswers {
     return self.answers;
 }
 
-- (NSString*) getQuestion {
-    return self.question;
+- (NSString*)getCorrectAnswer {
+    return self.correctAnswer;
 }
 
 @end

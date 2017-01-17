@@ -13,39 +13,72 @@
 
 @property (nonatomic) NSMutableArray* questions;
 @property (nonatomic) Question* currentQuestion;
+@property (nonatomic) int roundsWon;
+@property (nonatomic) int roundsLost;
+@property (nonatomic) BOOL wasLastAnswerCorrect;
 
 @end
 
 @implementation Game
 
 
-+ (Game*) newGame {
++ (Game*)newGame {
     
     Game *game = [[Game alloc] init];
     game.questions = [self generateQuestions];
+    game.roundsWon = 0;
+    game.roundsLost = 0;
     
     return game;
 }
 
-- (void) newQuestion {
+- (void)newQuestion {
     if (self.questions == nil || self.questions.count == 0)
         self.questions = [Game generateQuestions];
     
     int index = arc4random() % self.questions.count;
     self.currentQuestion = self.questions[index];
     [self.questions removeObjectAtIndex:index];
+    
+    self.wasLastAnswerCorrect = NO;
 }
 
-- (NSString*) getQuestion {
+- (NSString*)getQuestion {
     return [self.currentQuestion getQuestion];
 }
 
-- (NSArray*) getAnswers {
+- (NSArray*)getAnswers {
     return [self.currentQuestion getAnswers];
 }
 
-- (BOOL)makeGuess:(NSString*)guess {
-    return [self.currentQuestion isAnswerCorrect:guess];
+- (NSString*)getCorrectAnswer {
+    return [self.currentQuestion getCorrectAnswer];
+}
+
+- (void)answerQuestion:(NSString*)answer {
+    if ([answer isEqualToString:[self getCorrectAnswer]]) {
+        self.wasLastAnswerCorrect = YES;
+        self.roundsWon ++;
+    } else {
+        self.wasLastAnswerCorrect = NO;
+        self.roundsLost ++;
+    }
+}
+
+- (BOOL)wasAnswerCorrect {
+    return self.wasLastAnswerCorrect;
+}
+
+- (BOOL)isGameFinished {
+    return (self.roundsWon + self.roundsLost >= 5);
+}
+
+- (int)getRoundsWon {
+    return self.roundsWon;
+}
+
+- (int)getRoundsLost {
+    return self.roundsLost;
 }
 
 + (NSMutableArray*) generateQuestions {
