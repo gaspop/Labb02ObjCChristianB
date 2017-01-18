@@ -25,7 +25,7 @@
 + (Game*)newGame {
     
     Game *game = [[Game alloc] init];
-    game.questions = [self generateQuestions];
+    game.questions = [Question generateQuestions];
     game.roundsWon = 0;
     game.roundsLost = 0;
     
@@ -34,7 +34,7 @@
 
 - (void)newQuestion {
     if (self.questions == nil || self.questions.count == 0)
-        self.questions = [Game generateQuestions];
+        self.questions = [Question generateQuestions];
     
     int index = arc4random() % self.questions.count;
     self.currentQuestion = self.questions[index];
@@ -70,7 +70,7 @@
 }
 
 - (BOOL)isGameFinished {
-    return (self.roundsWon + self.roundsLost >= 5);
+    return ([self getCurrentRound] > 5);
 }
 
 - (int)getRoundsWon {
@@ -81,23 +81,8 @@
     return self.roundsLost;
 }
 
-+ (NSMutableArray*) generateQuestions {
-    NSLog(@"Generating new questions!");
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    
-    [array addObject:[Question newQuestion:@"Vem av turtlarna använder Katanas som vapen?"
-                                withAnswer:@"Leonardo"
-                              andBadAnswer:@"Michaelangelo" andBadAnswer:@"Donatello" andBadAnswer:@"Lennart"]];
-    
-    [array addObject:[Question newQuestion:@"Vad heter Bamses vän Lille Skutt?"
-                                withAnswer:@"Lille Skutt"
-                              andBadAnswer:@"Skalman" andBadAnswer:@"Bengt" andBadAnswer:@"Lennart"]];
-    
-    [array addObject:[Question newQuestion:@"Vad är roten av 25?"
-                                withAnswer:@"5"
-                              andBadAnswer:@"8" andBadAnswer:@"7" andBadAnswer:@"Lennart"]];
-    
-    return array;
+- (int)getCurrentRound {
+    return self.roundsWon + self.roundsLost + 1;
 }
 
 @end

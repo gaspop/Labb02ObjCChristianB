@@ -11,10 +11,10 @@
 @interface Question : NSObject
 
 + (Question*) newQuestion:(NSString*)q withAnswer:(NSString*)a andBadAnswer:(NSString*)bad1 andBadAnswer:(NSString*)bad2 andBadAnswer:(NSString*)bad3;
++ (NSMutableArray*) generateQuestions;
 
 - (NSString*) getQuestion;
 - (NSArray*) getAnswers;
 - (NSString*) getCorrectAnswer;
-- (BOOL) isAnswerCorrect:(NSString*)answer;
 
 @end

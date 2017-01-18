@@ -19,6 +19,7 @@
 - (BOOL) wasAnswerCorrect;
 - (int) getRoundsWon;
 - (int) getRoundsLost;
+- (int) getCurrentRound;
 - (void) answerQuestion:(NSString*) answer;
 
 @end

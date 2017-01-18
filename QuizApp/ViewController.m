@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIView *viewGameOver;
 @property (weak, nonatomic) IBOutlet UIView *viewRoundActive;
 @property (weak, nonatomic) IBOutlet UIView *viewRoundOver;
+@property (weak, nonatomic) IBOutlet UILabel *labelRound;
 @property (weak, nonatomic) IBOutlet UILabel *labelAnswer;
 @property (weak, nonatomic) IBOutlet UILabel *labelResult;
 @property (weak, nonatomic) IBOutlet UITextView *textQuestion;
@@ -47,6 +48,8 @@
 
 - (void)displayRoundActive {
     self.viewRoundOver.hidden = YES;
+
+    self.labelRound.text = [NSString stringWithFormat:@"Fråga %d:", [self.game getCurrentRound]];
     self.textQuestion.text = [self.game getQuestion];
 
     NSMutableArray *answers = [[self.game getAnswers] mutableCopy];
@@ -93,16 +96,25 @@
     
     int gameRoundCount = 5;
     NSString* gameResult;
+    NSString* gameCommentary;
+    NSString* linebreaks = @"\n\n";
     if ([self.game getRoundsWon] == gameRoundCount) {
+        gameCommentary = @"Bra jobbat!";
         gameResult = [NSString stringWithFormat:
-                      @"Du svarade rätt på alla %d frågor, bra jobbat!", gameRoundCount];
+                      @"Du svarade rätt på alla %d frågor.%@%@", gameRoundCount, linebreaks, gameCommentary];
     } else if ([self.game getRoundsLost] == gameRoundCount) {
+        gameCommentary = @"Kunde ha gått bättre...";
         gameResult = [NSString stringWithFormat:
-                      @"Du svarade inte rätt på en enda fråga av %d möjliga, bra jobbat!", gameRoundCount];
+                      @"Du svarade inte rätt på en enda fråga av %d möjliga.%@%@", gameRoundCount, linebreaks, gameCommentary];
     } else {
+        if ([self.game getRoundsWon] > [self.game getRoundsLost]) {
+            gameCommentary = @"Bra jobbat!";
+        } else {
+            gameCommentary = @"Du fick ju åtminstone ett rätt!";
+        }
         gameResult = [NSString stringWithFormat:
-                      @"Du svarade rätt på %d frågor och fel på %d. Bra jobbat!",
-                      [self.game getRoundsWon], [self.game getRoundsLost]];
+                      @"Du svarade rätt på %d frågor och fel på %d.%@%@",
+                      [self.game getRoundsWon], [self.game getRoundsLost], linebreaks, gameCommentary];
     }
     self.textResult.text = gameResult;
     
@@ -113,7 +125,6 @@
     [self.game newQuestion];
     
     [self displayRoundActive];
-    
 }
 
 - (IBAction)pressButton:(UIButton*)sender {
@@ -129,6 +140,7 @@
         [self newRound];
     }
 }
+
 - (IBAction)pressButtonRestart:(id)sender {
     self.game = [Game newGame];
     [self newRound];
