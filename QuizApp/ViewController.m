@@ -7,11 +7,13 @@
 //
 
 #import "ViewController.h"
+#import "ColorSet.h"
 #import "Game.h"
 
 @interface ViewController ()
 
 @property (nonatomic) Game *game;
+
 @property (strong, nonatomic) IBOutlet UIView *viewBackground;
 @property (weak, nonatomic) IBOutlet UIView *viewIndentation;
 @property (weak, nonatomic) IBOutlet UIView *viewGameActive;
@@ -38,7 +40,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [UIView setAnimationsEnabled:NO];
-    [self setupAppTheme];
+    self.buttonA.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.buttonB.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.buttonC.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.buttonD.titleLabel.textAlignment = NSTextAlignmentCenter;
     
     self.game = [[Game alloc] initWithLength:5];
     [self displayNewRound];
@@ -52,7 +57,7 @@
 
 - (void)displayNewRound {
     [self.game newQuestion];
-    
+    [self setAppTheme:[[ColorSet alloc]initBlue]];
     [self displayRoundActive];
 }
 
@@ -62,14 +67,11 @@
     self.labelRound.text = [NSString stringWithFormat:@"Fråga %d:", [self.game getCurrentRound]];
     self.textQuestion.text = [self.game getQuestion];
 
-    NSMutableArray *answers = [[self.game getAnswers] mutableCopy];
+    NSArray *answers = [self.game getAnswers];
     NSMutableArray *buttons = [@[self.buttonA, self.buttonB, self.buttonC, self.buttonD] mutableCopy];
-    for (int i = 0; i < 4; i ++) {
-        int answer = arc4random() % answers.count;
+    for (int i = 0; i < answers.count; i ++) {
         int button = arc4random() % buttons.count;
-        [buttons[button] setTitle:answers[answer] forState:UIControlStateNormal];
-        
-        [answers removeObjectAtIndex:answer];
+        [buttons[button] setTitle:answers[i] forState:UIControlStateNormal];
         [buttons removeObjectAtIndex:button];
     }
     self.viewRoundActive.hidden = NO;
@@ -79,8 +81,11 @@
     self.viewRoundActive.hidden = YES;
     if ([self.game wasAnswerCorrect]) {
         self.labelResult.text = @"Du svarade rätt!";
+        [self setAppTheme:[[ColorSet alloc]initGreen]];
+
     } else {
         self.labelResult.text = @"Du svarade fel!";
+        [self setAppTheme:[[ColorSet alloc]initRed]];
     }
     
     if (![self.game isGameFinished]) {
@@ -110,15 +115,19 @@
         gameCommentary = @"Bra jobbat!";
         gameResult = [NSString stringWithFormat:
                       @"Du svarade rätt på alla %d frågor.%@%@", self.game.gameLength, linebreaks, gameCommentary];
+        [self setAppTheme:[[ColorSet alloc]initYellow]];
     } else if (self.game.roundsLost == self.game.gameLength) {
         gameCommentary = @"Kunde ha gått bättre...";
         gameResult = [NSString stringWithFormat:
                       @"Du svarade inte rätt på en enda fråga av %d möjliga.%@%@", self.game.gameLength, linebreaks, gameCommentary];
+        [self setAppTheme:[[ColorSet alloc]initBrown]];
     } else {
         if (self.game.roundsWon > self.game.roundsLost) {
             gameCommentary = @"Bra jobbat!";
+            [self setAppTheme:[[ColorSet alloc]initYellow]];
         } else {
-            gameCommentary = @"Du fick ju åtminstone ett rätt!";
+            gameCommentary = @"Men du fick ju iallafall ett rätt!";
+            [self setAppTheme:[[ColorSet alloc]initBrown]];
         }
         gameResult = [NSString stringWithFormat:
                       @"Du svarade rätt på %d frågor och fel på %d.%@%@",
@@ -149,38 +158,28 @@
     [self displayGameActive];
 }
 
-- (void)setupAppTheme {
-    UIColor* text = [UIColor blackColor];
-    UIColor* background = [UIColor colorWithRed:1.0 green:0.972 blue:0.882 alpha:1.0];
-    UIColor* indentation = [UIColor colorWithRed:1.0 green:0.878 blue:0.509 alpha:1.0];
-    UIColor* button = [UIColor colorWithRed:1.0 green:0.756 blue:0.027 alpha:1.0];
-    UIColor* buttonText = [UIColor blackColor];
+- (void)setAppTheme:(ColorSet*)set {
+    self.viewBackground.backgroundColor = set.background;
+    self.viewIndentation.backgroundColor = set.foreground;
     
-    self.viewBackground.backgroundColor = background;
-    self.viewIndentation.backgroundColor = indentation;
+    self.labelRound.textColor = set.text;
+    self.labelAnswer.textColor = set.text;
+    self.labelResult.textColor = set.text;
+    self.textQuestion.textColor = set.text;
+    self.textResult.textColor = set.text;
     
-    self.labelRound.textColor = text;
-    self.labelAnswer.textColor = text;
-    self.labelResult.textColor = text;
-    self.textQuestion.textColor = text;
-    self.textResult.textColor = text;
-    
-    [self setButton:self.buttonA BG:button andTextColor:buttonText];
-    [self setButton:self.buttonB BG:button andTextColor:buttonText];
-    [self setButton:self.buttonC BG:button andTextColor:buttonText];
-    [self setButton:self.buttonD BG:button andTextColor:buttonText];
-    [self setButton:self.buttonNext BG:button andTextColor:buttonText];
-    [self setButton:self.buttonRestart BG:button andTextColor:buttonText];
-    
-    self.buttonA.titleLabel.textAlignment = NSTextAlignmentCenter;
-    self.buttonB.titleLabel.textAlignment = NSTextAlignmentCenter;
-    self.buttonC.titleLabel.textAlignment = NSTextAlignmentCenter;
-    self.buttonD.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [self setButton:self.buttonA BG:set.button andText:set.buttonText andShadowColor:set.buttonTextShadow];
+    [self setButton:self.buttonB BG:set.button andText:set.buttonText andShadowColor:set.buttonTextShadow];
+    [self setButton:self.buttonC BG:set.button andText:set.buttonText andShadowColor:set.buttonTextShadow];
+    [self setButton:self.buttonD BG:set.button andText:set.buttonText andShadowColor:set.buttonTextShadow];
+    [self setButton:self.buttonNext BG:set.button andText:set.buttonText andShadowColor:set.buttonTextShadow];
+    [self setButton:self.buttonRestart BG:set.button andText:set.buttonText andShadowColor:set.buttonTextShadow];
 }
 
-- (void)setButton:(UIButton*)btn BG:(UIColor*)bg andTextColor:(UIColor*)txt {
+- (void)setButton:(UIButton*)btn BG:(UIColor*)bg andText:(UIColor*)txt andShadowColor:(UIColor*)shd {
     btn.backgroundColor = bg;
     [btn setTitleColor:txt forState:UIControlStateNormal];
+    [btn setTitleShadowColor:shd forState:UIControlStateNormal];
 }
 
 @end

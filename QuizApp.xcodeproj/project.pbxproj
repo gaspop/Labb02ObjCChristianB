@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3747E2A21E31616C00606EFE /* ColorSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3747E2A11E31616C00606EFE /* ColorSet.m */; };
 		37692BE71E2D555500B3D0F2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 37692BE61E2D555500B3D0F2 /* main.m */; };
 		37692BEA1E2D555500B3D0F2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 37692BE91E2D555500B3D0F2 /* AppDelegate.m */; };
 		37692BED1E2D555500B3D0F2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37692BEC1E2D555500B3D0F2 /* ViewController.m */; };
@@ -18,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3747E2A01E31616C00606EFE /* ColorSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorSet.h; sourceTree = "<group>"; };
+		3747E2A11E31616C00606EFE /* ColorSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorSet.m; sourceTree = "<group>"; };
 		37692BE21E2D555500B3D0F2 /* QuizApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37692BE61E2D555500B3D0F2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		37692BE81E2D555500B3D0F2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -66,12 +69,14 @@
 			children = (
 				37692BE81E2D555500B3D0F2 /* AppDelegate.h */,
 				37692BE91E2D555500B3D0F2 /* AppDelegate.m */,
-				37692BEB1E2D555500B3D0F2 /* ViewController.h */,
-				37692BEC1E2D555500B3D0F2 /* ViewController.m */,
-				37D1D5441E2E38CD008D427F /* Question.h */,
-				37D1D5451E2E38CD008D427F /* Question.m */,
+				3747E2A01E31616C00606EFE /* ColorSet.h */,
+				3747E2A11E31616C00606EFE /* ColorSet.m */,
 				37D1D54A1E2E5D86008D427F /* Game.h */,
 				37D1D54B1E2E5D86008D427F /* Game.m */,
+				37D1D5441E2E38CD008D427F /* Question.h */,
+				37D1D5451E2E38CD008D427F /* Question.m */,
+				37692BEB1E2D555500B3D0F2 /* ViewController.h */,
+				37692BEC1E2D555500B3D0F2 /* ViewController.m */,
 				37692BEE1E2D555500B3D0F2 /* Main.storyboard */,
 				37692BF11E2D555500B3D0F2 /* Assets.xcassets */,
 				37692BF31E2D555500B3D0F2 /* LaunchScreen.storyboard */,
@@ -164,6 +169,7 @@
 				37692BED1E2D555500B3D0F2 /* ViewController.m in Sources */,
 				37D1D5461E2E38CD008D427F /* Question.m in Sources */,
 				37692BEA1E2D555500B3D0F2 /* AppDelegate.m in Sources */,
+				3747E2A21E31616C00606EFE /* ColorSet.m in Sources */,
 				37692BE71E2D555500B3D0F2 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
