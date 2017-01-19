@@ -10,16 +10,18 @@
 
 @interface Game : NSObject
 
-+ (Game*) newGame;
+@property (nonatomic, readonly) int gameLength;
+@property (nonatomic, readonly) int roundsWon;
+@property (nonatomic, readonly) int roundsLost;
+@property (nonatomic, readonly, getter=getCurrentRound) int currentRound;
+
+- (instancetype)initWithLength:(int) length;
 - (void) newQuestion;
+- (void) answerQuestion:(NSString*) answer;
 - (NSString*) getQuestion;
 - (NSArray*) getAnswers;
 - (NSString*) getCorrectAnswer;
-- (BOOL) isGameFinished;
 - (BOOL) wasAnswerCorrect;
-- (int) getRoundsWon;
-- (int) getRoundsLost;
-- (int) getCurrentRound;
-- (void) answerQuestion:(NSString*) answer;
+- (BOOL) isGameFinished;
 
 @end

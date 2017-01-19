@@ -12,7 +12,6 @@
 
 @property (nonatomic) NSString *question;
 @property (nonatomic) NSArray *answers;
-@property (nonatomic) NSString *correctAnswer;
 
 @end
 
@@ -22,7 +21,6 @@
     Question *newQuestion = [[Question alloc] init];
     newQuestion.question = q;
     newQuestion.answers = @[a, bad1, bad2, bad3];
-    newQuestion.correctAnswer = a;
     
     return newQuestion;
 }
@@ -35,8 +33,9 @@
     return self.answers;
 }
 
+// Answer at Index 0 is always the right answer.
 - (NSString*)getCorrectAnswer {
-    return self.correctAnswer;
+    return self.answers[0];
 }
 
 + (NSMutableArray*) generateQuestions {

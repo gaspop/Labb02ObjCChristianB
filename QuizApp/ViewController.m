@@ -36,8 +36,8 @@
     // Do any additional setup after loading the view, typically from a nib.
     [UIView setAnimationsEnabled:NO];
     
-    self.game = [Game newGame];
-    [self newRound];
+    self.game = [[Game alloc] initWithLength:5];
+    [self displayNewRound];
     [self displayGameActive];
 }
 
@@ -94,34 +94,32 @@
 - (void)displayGameOver {
     self.viewGameActive.hidden = YES;
     
-    int gameRoundCount = 5;
-    NSString* gameResult;
-    NSString* gameCommentary;
-    NSString* linebreaks = @"\n\n";
-    if ([self.game getRoundsWon] == gameRoundCount) {
+    NSString *gameResult, *gameCommentary;
+    NSString *linebreaks = @"\n\n";
+    if (self.game.roundsWon == self.game.gameLength) {
         gameCommentary = @"Bra jobbat!";
         gameResult = [NSString stringWithFormat:
-                      @"Du svarade rätt på alla %d frågor.%@%@", gameRoundCount, linebreaks, gameCommentary];
-    } else if ([self.game getRoundsLost] == gameRoundCount) {
+                      @"Du svarade rätt på alla %d frågor.%@%@", self.game.gameLength, linebreaks, gameCommentary];
+    } else if (self.game.roundsLost == self.game.gameLength) {
         gameCommentary = @"Kunde ha gått bättre...";
         gameResult = [NSString stringWithFormat:
-                      @"Du svarade inte rätt på en enda fråga av %d möjliga.%@%@", gameRoundCount, linebreaks, gameCommentary];
+                      @"Du svarade inte rätt på en enda fråga av %d möjliga.%@%@", self.game.gameLength, linebreaks, gameCommentary];
     } else {
-        if ([self.game getRoundsWon] > [self.game getRoundsLost]) {
+        if (self.game.roundsWon > self.game.roundsLost) {
             gameCommentary = @"Bra jobbat!";
         } else {
             gameCommentary = @"Du fick ju åtminstone ett rätt!";
         }
         gameResult = [NSString stringWithFormat:
                       @"Du svarade rätt på %d frågor och fel på %d.%@%@",
-                      [self.game getRoundsWon], [self.game getRoundsLost], linebreaks, gameCommentary];
+                      self.game.roundsWon, self.game.roundsLost, linebreaks, gameCommentary];
     }
     self.textResult.text = gameResult;
     
     self.viewGameOver.hidden = NO;
 }
 
-- (void)newRound {
+- (void)displayNewRound {
     [self.game newQuestion];
     
     [self displayRoundActive];
@@ -137,13 +135,13 @@
     if ([self.game isGameFinished]) {
         [self displayGameOver];
     } else {
-        [self newRound];
+        [self displayNewRound];
     }
 }
 
 - (IBAction)pressButtonRestart:(id)sender {
-    self.game = [Game newGame];
-    [self newRound];
+    self.game = [[Game alloc] initWithLength:5];
+    [self displayNewRound];
     [self displayGameActive];
 }
 
