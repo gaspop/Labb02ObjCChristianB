@@ -12,6 +12,8 @@
 @interface ViewController ()
 
 @property (nonatomic) Game *game;
+@property (strong, nonatomic) IBOutlet UIView *viewBackground;
+@property (weak, nonatomic) IBOutlet UIView *viewIndentation;
 @property (weak, nonatomic) IBOutlet UIView *viewGameActive;
 @property (weak, nonatomic) IBOutlet UIView *viewGameOver;
 @property (weak, nonatomic) IBOutlet UIView *viewRoundActive;
@@ -26,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonC;
 @property (weak, nonatomic) IBOutlet UIButton *buttonD;
 @property (weak, nonatomic) IBOutlet UIButton *buttonNext;
+@property (weak, nonatomic) IBOutlet UIButton *buttonRestart;
 
 @end
 
@@ -35,6 +38,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [UIView setAnimationsEnabled:NO];
+    [self setupAppTheme];
     
     self.game = [[Game alloc] initWithLength:5];
     [self displayNewRound];
@@ -44,6 +48,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)displayNewRound {
+    [self.game newQuestion];
+    
+    [self displayRoundActive];
 }
 
 - (void)displayRoundActive {
@@ -95,7 +105,7 @@
     self.viewGameActive.hidden = YES;
     
     NSString *gameResult, *gameCommentary;
-    NSString *linebreaks = @"\n\n";
+    NSString *linebreaks = @"\n\n\n\n\n";
     if (self.game.roundsWon == self.game.gameLength) {
         gameCommentary = @"Bra jobbat!";
         gameResult = [NSString stringWithFormat:
@@ -119,12 +129,6 @@
     self.viewGameOver.hidden = NO;
 }
 
-- (void)displayNewRound {
-    [self.game newQuestion];
-    
-    [self displayRoundActive];
-}
-
 - (IBAction)pressButton:(UIButton*)sender {
     NSString* answer = sender.currentTitle;
     [self.game answerQuestion:answer];
@@ -143,6 +147,40 @@
     self.game = [[Game alloc] initWithLength:5];
     [self displayNewRound];
     [self displayGameActive];
+}
+
+- (void)setupAppTheme {
+    UIColor* text = [UIColor blackColor];
+    UIColor* background = [UIColor colorWithRed:1.0 green:0.972 blue:0.882 alpha:1.0];
+    UIColor* indentation = [UIColor colorWithRed:1.0 green:0.878 blue:0.509 alpha:1.0];
+    UIColor* button = [UIColor colorWithRed:1.0 green:0.756 blue:0.027 alpha:1.0];
+    UIColor* buttonText = [UIColor blackColor];
+    
+    self.viewBackground.backgroundColor = background;
+    self.viewIndentation.backgroundColor = indentation;
+    
+    self.labelRound.textColor = text;
+    self.labelAnswer.textColor = text;
+    self.labelResult.textColor = text;
+    self.textQuestion.textColor = text;
+    self.textResult.textColor = text;
+    
+    [self setButton:self.buttonA BG:button andTextColor:buttonText];
+    [self setButton:self.buttonB BG:button andTextColor:buttonText];
+    [self setButton:self.buttonC BG:button andTextColor:buttonText];
+    [self setButton:self.buttonD BG:button andTextColor:buttonText];
+    [self setButton:self.buttonNext BG:button andTextColor:buttonText];
+    [self setButton:self.buttonRestart BG:button andTextColor:buttonText];
+    
+    self.buttonA.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.buttonB.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.buttonC.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.buttonD.titleLabel.textAlignment = NSTextAlignmentCenter;
+}
+
+- (void)setButton:(UIButton*)btn BG:(UIColor*)bg andTextColor:(UIColor*)txt {
+    btn.backgroundColor = bg;
+    [btn setTitleColor:txt forState:UIControlStateNormal];
 }
 
 @end
