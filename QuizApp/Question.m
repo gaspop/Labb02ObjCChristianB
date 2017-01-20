@@ -82,6 +82,26 @@
                                 withAnswer:@"Walt Disney"
                               andBadAnswer:@"Carl Barks" andBadAnswer:@"Carl Lennart" andBadAnswer:@"Rune Andreasson"]];
     
+    [array addObject:[Question newQuestion:@"Vad är den kemiska formeln för bajs?"
+                                withAnswer:@"Det finns ingen"
+                              andBadAnswer:@"B4J5" andBadAnswer:@"Ba(NO3)2" andBadAnswer:@"H20"]];
+    
+    [array addObject:[Question newQuestion:@"Vad kallas jultomten i tyskland?"
+                                withAnswer:@"Weihnachtsmann"
+                              andBadAnswer:@"Radmann" andBadAnswer:@"Nikolaus Weihnacht" andBadAnswer:@"Radgarten"]];
+    
+    [array addObject:[Question newQuestion:@"Vad var artisten Prince fullständiga namn?"
+                                withAnswer:@"Prince Rogers Nelson"
+                              andBadAnswer:@"Sven Bertil Prince" andBadAnswer:@"David Prince Jones" andBadAnswer:@"Bengt Prince"]];
+    
+    [array addObject:[Question newQuestion:@"Vilket år lanserades Super Nintendo i Sverige?"
+                                withAnswer:@"1992"
+                              andBadAnswer:@"1990" andBadAnswer:@"1993" andBadAnswer:@"1995"]];
+    
+    [array addObject:[Question newQuestion:@"Vem regisserade filmen \"Stalker\" från 1979?"
+                                withAnswer:@"Andrej Tarkovskij"
+                              andBadAnswer:@"Krzysztof Kieslowski" andBadAnswer:@"Andrej Kissochbajslowski" andBadAnswer:@"Krzysztof Tarkovskij"]];
+    
     NSLog(@"Questions generated: %d", (int) [array count]);
     
     return array;

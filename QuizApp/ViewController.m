@@ -115,7 +115,7 @@
         gameCommentary = @"Bra jobbat!";
         gameResult = [NSString stringWithFormat:
                       @"Du svarade rätt på alla %d frågor.%@%@", self.game.gameLength, linebreaks, gameCommentary];
-        [self setAppTheme:[[ColorSet alloc]initYellow]];
+        [self setAppTheme:[[ColorSet alloc]initLime]];
     } else if (self.game.roundsLost == self.game.gameLength) {
         gameCommentary = @"Kunde ha gått bättre...";
         gameResult = [NSString stringWithFormat:
@@ -127,7 +127,7 @@
             [self setAppTheme:[[ColorSet alloc]initYellow]];
         } else {
             gameCommentary = @"Men du fick ju iallafall ett rätt!";
-            [self setAppTheme:[[ColorSet alloc]initBrown]];
+            [self setAppTheme:[[ColorSet alloc]initOrange]];
         }
         gameResult = [NSString stringWithFormat:
                       @"Du svarade rätt på %d frågor och fel på %d.%@%@",

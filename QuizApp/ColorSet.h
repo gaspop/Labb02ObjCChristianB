@@ -22,7 +22,9 @@
 - (instancetype)initRed;
 - (instancetype)initGreen;
 - (instancetype)initBlue;
+- (instancetype)initLime;
 - (instancetype)initYellow;
+- (instancetype)initOrange;
 - (instancetype)initBrown;
 + (UIColor*)newColorR:(int)r G:(int)g B:(int)b;
 

@@ -43,8 +43,8 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="140" height="69"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="1" green="0.53676041409999997" blue="0.1342731784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <inset key="contentEdgeInsets" minX="6" minY="6" maxX="6" maxY="6"/>
-                                                <inset key="titleEdgeInsets" minX="6" minY="6" maxX="6" maxY="6"/>
+                                                <inset key="contentEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
+                                                <inset key="titleEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                                 <size key="titleShadowOffset" width="1" height="1"/>
                                                 <state key="normal" title="John Kennedy Toole">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -63,8 +63,8 @@
                                                 <rect key="frame" x="148" y="0.0" width="140" height="69"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="1" green="0.53676041409999997" blue="0.1342731784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <inset key="contentEdgeInsets" minX="6" minY="6" maxX="6" maxY="6"/>
-                                                <inset key="titleEdgeInsets" minX="6" minY="6" maxX="6" maxY="6"/>
+                                                <inset key="contentEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
+                                                <inset key="titleEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                                 <size key="titleShadowOffset" width="1" height="1"/>
                                                 <state key="normal" title="Button">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -83,8 +83,8 @@
                                                 <rect key="frame" x="0.0" y="77" width="140" height="69"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="1" green="0.53676041409999997" blue="0.1342731784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <inset key="contentEdgeInsets" minX="6" minY="6" maxX="6" maxY="6"/>
-                                                <inset key="titleEdgeInsets" minX="6" minY="6" maxX="6" maxY="8"/>
+                                                <inset key="contentEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
+                                                <inset key="titleEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                                 <size key="titleShadowOffset" width="1" height="1"/>
                                                 <state key="normal" title="Button">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -102,8 +102,8 @@
                                                 <rect key="frame" x="148" y="77" width="140" height="69"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="1" green="0.53676041409999997" blue="0.1342731784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <inset key="contentEdgeInsets" minX="6" minY="6" maxX="6" maxY="6"/>
-                                                <inset key="titleEdgeInsets" minX="6" minY="6" maxX="6" maxY="6"/>
+                                                <inset key="contentEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
+                                                <inset key="titleEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                                 <size key="titleShadowOffset" width="1" height="1"/>
                                                 <state key="normal" title="Button">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -213,7 +213,7 @@
                                         <rect key="frame" x="24" y="63" width="240" height="298"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>

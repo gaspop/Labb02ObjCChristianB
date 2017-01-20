@@ -55,6 +55,21 @@
     return self;
 }
 
+- (instancetype)initLime {
+    self = [super init];
+    
+    if (self) {
+        _background = [ColorSet newColorR:178 G:255 B:89];
+        _foreground = [ColorSet newColorR:240 G:244 B:195];
+        _text = [ColorSet newColorR:0 G:0 B:0];
+        _text = [ColorSet newColorR:0 G:0 B:0];
+        _button = [ColorSet newColorR:100 G:221 B:23];
+        _buttonText = [ColorSet newColorR:255 G:255 B:255];
+        _buttonTextShadow = [ColorSet newColorR:0 G:0 B:0];
+    }
+    return self;
+}
+
 - (instancetype)initYellow {
     self = [super init];
     
@@ -64,6 +79,21 @@
         _text = [ColorSet newColorR:0 G:0 B:0];
         _text = [ColorSet newColorR:0 G:0 B:0];
         _button = [ColorSet newColorR:255 G:152 B:0];
+        _buttonText = [ColorSet newColorR:255 G:255 B:255];
+        _buttonTextShadow = [ColorSet newColorR:0 G:0 B:0];
+    }
+    return self;
+}
+
+- (instancetype)initOrange {
+    self = [super init];
+    
+    if (self) {
+        _background = [ColorSet newColorR:255 G:152 B:0];
+        _foreground = [ColorSet newColorR:255 G:224 B:178];
+        _text = [ColorSet newColorR:0 G:0 B:0];
+        _text = [ColorSet newColorR:0 G:0 B:0];
+        _button = [ColorSet newColorR:239 G:108 B:0];
         _buttonText = [ColorSet newColorR:255 G:255 B:255];
         _buttonTextShadow = [ColorSet newColorR:0 G:0 B:0];
     }
