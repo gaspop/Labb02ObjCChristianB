@@ -153,7 +153,7 @@
 }
 
 - (IBAction)pressButtonRestart:(id)sender {
-    self.game = [[Game alloc] initWithLength:5];
+    [self.game restartGame];
     [self displayNewRound];
     [self displayGameActive];
 }

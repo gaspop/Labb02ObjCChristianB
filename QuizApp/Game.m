@@ -19,7 +19,7 @@
 
 @implementation Game
 
-- (instancetype)initWithLength:(int) length {
+- (instancetype)initWithLength:(int)length {
     self = [super init];
     
     if (self) {
@@ -30,6 +30,12 @@
     }
     
     return self;
+}
+
+- (void)restartGame {
+    NSLog(@"Questions remaining: %lu", (unsigned long) self.questions.count);
+    _roundsWon = 0;
+    _roundsLost = 0;
 }
 
 - (void)newQuestion {

@@ -15,7 +15,8 @@
 @property (nonatomic, readonly) int roundsLost;
 @property (nonatomic, readonly, getter=getCurrentRound) int currentRound;
 
-- (instancetype)initWithLength:(int) length;
+- (instancetype)initWithLength:(int)length;
+- (void) restartGame;
 - (void) newQuestion;
 - (void) answerQuestion:(NSString*) answer;
 - (NSString*) getQuestion;
