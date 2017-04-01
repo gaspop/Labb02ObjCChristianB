@@ -17,6 +17,7 @@
 
 @end
 
+
 @implementation Game
 
 - (instancetype)initWithLength:(int)length {

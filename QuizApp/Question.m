@@ -15,6 +15,7 @@
 
 @end
 
+
 @implementation Question
 
 + (Question*) newQuestion:(NSString*)q withAnswer:(NSString*)a andBadAnswer:(NSString*)bad1 andBadAnswer:(NSString*)bad2 andBadAnswer:(NSString*)bad3 {
@@ -82,9 +83,9 @@
                                 withAnswer:@"Walt Disney"
                               andBadAnswer:@"Carl Barks" andBadAnswer:@"Carl Lennart" andBadAnswer:@"Rune Andreasson"]];
     
-    [array addObject:[Question newQuestion:@"Vad är den kemiska formeln för bajs?"
+    [array addObject:[Question newQuestion:@"Vad är den kemiska formeln för sten?"
                                 withAnswer:@"Det finns ingen"
-                              andBadAnswer:@"B4J5" andBadAnswer:@"Ba(NO3)2" andBadAnswer:@"H20"]];
+                              andBadAnswer:@"S73N" andBadAnswer:@"St(NO3)2" andBadAnswer:@"H20"]];
     
     [array addObject:[Question newQuestion:@"Vad kallas jultomten i tyskland?"
                                 withAnswer:@"Weihnachtsmann"
@@ -100,7 +101,7 @@
     
     [array addObject:[Question newQuestion:@"Vem regisserade filmen \"Stalker\" från 1979?"
                                 withAnswer:@"Andrej Tarkovskij"
-                              andBadAnswer:@"Krzysztof Kieslowski" andBadAnswer:@"Andrej Kissochbajslowski" andBadAnswer:@"Krzysztof Tarkovskij"]];
+                              andBadAnswer:@"Krzysztof Kieslowski" andBadAnswer:@"Andrej Kieslowski" andBadAnswer:@"Krzysztof Tarkovskij"]];
     
     NSLog(@"Questions generated: %d", (int) [array count]);
     
