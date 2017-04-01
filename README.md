@@ -1,4 +1,4 @@
-# Labb02ObjCChristianB
+# Labb 2 - QuizApp
 
 
 Er uppgift är att skapa en Quiz-app för en spelare åt gången.
